@@ -6,28 +6,21 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HonoWebsocketComponent } from './hono-websocket/hono-websocket.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ChatComponent } from './chat/chat.component';
-import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 // import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HonoWebsocketComponent,
-    LoginComponent,
-    RegisterComponent,
-    ChatComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatGridListModule,
     AppRoutingModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token'),

@@ -1,39 +1,81 @@
-<div class="chat-container">
-  <mat-card class="user-settings">
-    <mat-form-field appearance="outline">
-      <mat-label>Enter your username</mat-label>
-      <input matInput [(ngModel)]="username" />
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="setUsername()">Set Username</button>
-  </mat-card>
+<div class="chat-container px-3 py-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="sender">
+        <div class="sender-card">
+          <div class="sender-card-header">
+            <h3>Sender</h3>
+          </div>
+          <div class="sender-card-body">
+            <div class="sender-item">
+              <div class="sender-item-content">
+                <div class="user-info align-items-center">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Enter your username</mat-label>
+                    <input matInput [(ngModel)]="username" />
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" (click)="setUsername()">Set Username</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="sender-card-header">
+            <h3>Receiver</h3>
+          </div>
+          <div class="sender-card-body">
+            <div class="user-select">
+              <div class="sender-item">
+                <div class="receiver-item-content">
+                  <div class="user-info d-flex align-items-center gap-2">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Select User</mat-label>
+                      <mat-select [(value)]="targetSocketId">
+                        <mat-option *ngFor="let socketId of getUserListKeys()" [value]="socketId">
+                          {{ userList[socketId] }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <mat-card class="user-select my-2">
-    <mat-form-field appearance="outline">
-      <mat-label>Select User</mat-label>
-      <mat-select [(value)]="targetSocketId">
-        <mat-option *ngFor="let socketId of getUserListKeys()" [value]="socketId">
-          {{ userList[socketId] }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-card>
-
-  <mat-card class="message-list">
-    <h1>Messages</h1>
-    <mat-list class="message-list-overflow">
-      <mat-list-item *ngFor="let message of messageList" [ngClass]="{'sent-message': message.isSent, 'received-message': !message.isSent}">
-        {{ message.text }}
-      </mat-list-item>
-    </mat-list>
-  </mat-card>
-
-  <mat-card class="message-input p-2">
-    <mat-form-field appearance="outline" class="message-input-field">
-      <mat-label>Enter your message</mat-label>
-      <input matInput [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" />
-    </mat-form-field>
-    <button mat-raised-button color="primary" class="mb-2" (click)="sendMessage()">Send Message</button>
-  </mat-card>
+    <div class="col-md-8">
+      <div class="receiver">
+        <div class="receiver-card">
+          <div class="receiver-card-header">
+            <h3>Messages</h3>
+          </div>
+          <div class="receiver-card-body">
+            <div class="receiver-item" *ngFor="let message of messageList">
+              <div class="receiver-item-content"
+                [ngClass]="{'sent-message': message.isSent, 'received-message': !message.isSent}">
+                <ng-container *ngIf="message.text; else emptyMessage">
+                  {{ message.text }}
+                </ng-container>
+                <ng-template #emptyMessage>
+                  <span class="empty-message">Connected . . .</span>
+                </ng-template>
+                <div class="user-info d-flex align-items-center gap-2">
+                  <!-- <p class="m-0"><strong>{{message.sender}}:</strong> {{message.text}}</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="receiver-card-footer">
+            <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"
+              placeholder="Type your message here">
+            <button (click)="sendMessage()">
+              <mat-icon>send</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- <router-outlet></router-outlet> -->
