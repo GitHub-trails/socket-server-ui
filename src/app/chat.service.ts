@@ -8,7 +8,8 @@ import { io } from 'socket.io-client';
 export class ChatService {
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
   public userList$: BehaviorSubject<{ [key: string]: string }> = new BehaviorSubject({});
-  private socket = io('http://localhost:3000');
+  // private socket = io('http://localhost:3000');
+  private socket = io('https://socket-server-vjzb.onrender.com');
 
   constructor() {
     this.socket.on('userList', (users: { [key: string]: string }) => {
