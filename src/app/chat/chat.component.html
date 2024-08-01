@@ -1,0 +1,28 @@
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <a *ngFor="let user of userListKeys" class="list-group-item list-group-item-action"
+                    [ngClass]="{ 'active': user === selectedUser }" (click)="selectUser(user)">
+                    {{ userList[user] }} - Last Message: {{ lastMessages[user] }}
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="chat-box">
+                <div class="messages">
+                    <div *ngFor="let message of messageList">
+                        <div class="message">{{ message }}</div>
+                    </div>
+                </div>
+
+                <div class="message-input">
+                    <input class="form-control" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"
+                        placeholder="Enter your message" />
+                    <button class="btn btn-primary mt-2" (click)="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

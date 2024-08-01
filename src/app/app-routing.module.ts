@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { ChatComponent } from './chat/chat.component';
 import { RegisterComponent } from './register/register.component';
-import { HonoWebsocketComponent } from './hono-websocket/hono-websocket.component';
-import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'chat', component: ChatComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'chat', component: HonoWebsocketComponent },
-  { path: '**', redirectTo: '/login' }
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

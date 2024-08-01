@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-register',
@@ -8,25 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  username: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  errorMessage: string = '';
+  username = '';
+  password = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private chatService: ChatService) { }
 
   register() {
-    if (this.password !== this.confirmPassword) {
-      this.errorMessage = 'Passwords do not match';
-      return;
-    }
-
-    this.authService.register(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/login']),
-      error: (err) => {
-        console.error(err);
-        this.errorMessage = 'Registration failed';
-      }
-    });
+    // this.chatService.register(this.username, this.password)
+    //   .subscribe(() => {
+    //     alert('Registration successful');
+    //     // Redirect to login page or automatically log in
+    //   });
   }
 }

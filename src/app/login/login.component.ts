@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
+  username = '';
+  password = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private chatService: ChatService) { }
 
   login() {
-    this.authService.login(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/chat']),
-      error: (err) => {
-        console.error(err);
-        this.errorMessage = 'Invalid username or password';
-      }
-    });
+    // this.chatService.login(this.username, this.password);
   }
 }

@@ -1,10 +1,39 @@
-<div *ngFor="let message of messageList">
-  <li>
-    {{message}}
-  </li>
+<div class="chat-container">
+  <mat-card class="user-settings">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your username</mat-label>
+      <input matInput [(ngModel)]="username" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="setUsername()">Set Username</button>
+  </mat-card>
+
+  <mat-card class="user-select my-2">
+    <mat-form-field appearance="outline">
+      <mat-label>Select User</mat-label>
+      <mat-select [(value)]="targetSocketId">
+        <mat-option *ngFor="let socketId of getUserListKeys()" [value]="socketId">
+          {{ userList[socketId] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card class="message-list">
+    <h1>Messages</h1>
+    <mat-list class="message-list-overflow">
+      <mat-list-item *ngFor="let message of messageList" [ngClass]="{'sent-message': message.isSent, 'received-message': !message.isSent}">
+        {{ message.text }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  <mat-card class="message-input p-2">
+    <mat-form-field appearance="outline" class="message-input-field">
+      <mat-label>Enter your message</mat-label>
+      <input matInput [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="mb-2" (click)="sendMessage()">Send Message</button>
+  </mat-card>
 </div>
 
-<input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
-<button (click)="sendMessage()">Send Message</button>
-
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

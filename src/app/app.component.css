@@ -1,0 +1,19 @@
+.chat-container {
+    height: 90vh;
+    padding: 20px;
+}
+
+.message-list-overflow {
+    overflow-y: auto;
+    height: 30vh;
+}
+
+.sent-message {
+  text-align: right;
+  background-color: #e0f7fa;
+}
+
+.received-message {
+  text-align: left;
+  background-color: #f1f8e9;
+}
