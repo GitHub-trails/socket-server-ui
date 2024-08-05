@@ -16,7 +16,7 @@
                   </mat-form-field>
                   <ngx-turnstile [siteKey]="siteKey" (resolved)="sendCaptchaResponse($event)" theme="auto"
                     [tabIndex]="0"></ngx-turnstile>
-                  <button mat-raised-button color="primary" (click)="setUsername()" [disabled]="isButtonDisabled()">Set Username</button>
+                  <button mat-raised-button color="primary" (click)="setUsername()" [disabled]="!captchaResolved">Set Username</button>
                 </div>
               </div>
             </div>

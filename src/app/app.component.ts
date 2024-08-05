@@ -50,9 +50,5 @@ export class AppComponent implements OnInit {
   sendCaptchaResponse(captchaResponse: any) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
     this.captchaResolved = true;
-  }
-
-  isButtonDisabled(): boolean {
-    return !this.captchaResolved || (this.form.get('username')?.invalid ?? false);
-  }  
+  } 
 }
