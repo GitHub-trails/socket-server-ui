@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +12,9 @@ export class AppComponent implements OnInit {
   username = '';
   targetSocketId = '';
   userList: { [key: string]: string } = {};
-  form: FormGroup;
   captchaResolved = false;
 
-  constructor(private chatService: ChatService, private fb: FormBuilder) {
-    this.form = this.fb.group({
-      username: ['', Validators.required]
-    });
-  }
+  constructor(private chatService: ChatService) {}
 
   ngOnInit() {
     this.chatService.getNewMessage().subscribe((message: string) => {
@@ -50,5 +44,5 @@ export class AppComponent implements OnInit {
   sendCaptchaResponse(captchaResponse: any) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
     this.captchaResolved = true;
-  } 
+  }
 }
