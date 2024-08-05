@@ -21,8 +21,8 @@ export class ChatService {
     this.socket.emit('message', { targetSocketId, message });
   }
 
-  public setUsername(username: string) {
-    this.socket.emit('setUsername', username);
+  public setUsername(username: string, captchaResponse: string) {
+    this.socket.emit('setUsername', { username, captchaResponse });
   }
 
   public getNewMessage = (): Observable<string> => {

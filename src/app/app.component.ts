@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   targetSocketId = '';
   userList: { [key: string]: string } = {};
   captchaResolved = false;
+  captchaResponse = '';
 
   constructor(private chatService: ChatService) {}
 
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   setUsername() {
-    this.chatService.setUsername(this.username);
+    this.chatService.setUsername(this.username, this.captchaResponse);
   }
 
   getUserListKeys(): string[] {
@@ -43,6 +44,7 @@ export class AppComponent implements OnInit {
   siteKey = '0x4AAAAAAAghjzXnibYzdPWZ';
   sendCaptchaResponse(captchaResponse: any) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
+    this.captchaResponse = captchaResponse;
     this.captchaResolved = true;
   }
 }
