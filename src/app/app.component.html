@@ -12,9 +12,11 @@
                 <div class="user-info align-items-center">
                   <mat-form-field appearance="outline">
                     <mat-label>Enter your username</mat-label>
-                    <input matInput [(ngModel)]="username" />
+                    <input matInput formControlName="username" />
                   </mat-form-field>
-                  <button mat-raised-button color="primary" (click)="setUsername()">Set Username</button>
+                  <ngx-turnstile [siteKey]="siteKey" (resolved)="sendCaptchaResponse($event)" theme="auto"
+                    [tabIndex]="0"></ngx-turnstile>
+                  <button mat-raised-button color="primary" (click)="setUsername()" [disabled]="isButtonDisabled()">Set Username</button>
                 </div>
               </div>
             </div>

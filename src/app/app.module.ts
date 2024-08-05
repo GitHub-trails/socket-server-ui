@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxTurnstileModule } from "ngx-turnstile";
 // import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatGridListModule,
     AppRoutingModule,
     MatIconModule,
+    NgxTurnstileModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token'),
