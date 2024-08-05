@@ -53,6 +53,6 @@ export class AppComponent implements OnInit {
   }
 
   isButtonDisabled(): boolean {
-    return !this.captchaResolved || this.form.get('username')!.invalid;
-  }
+    return !this.captchaResolved || (this.form.get('username')?.invalid ?? false);
+  }  
 }
